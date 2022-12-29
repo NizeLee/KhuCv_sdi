@@ -172,7 +172,7 @@ void CProject::Run(cv::Mat Input, cv::Mat& Output, bool bVerbose) {
 }
 ```
 
-* Showing string information (DlgPrintf function) - lower output window
+* Showing string information (DlgPrintf function)
 ``` C++
 DlgPrintf("%05d: %s, %10.5lfms", m_nProcessingNum, fileName, processingTime);
 ```
