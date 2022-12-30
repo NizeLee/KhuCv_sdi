@@ -35,7 +35,11 @@ EVT_MENU(IDM_CONTEXT_ZOOM_OUT, CMainFrame::OnZoomOut)
 END_EVENT_TABLE()
 
 CMainFrame::CMainFrame(const wxString& title)
+#ifndef  __APPLE__ 
     : wxFrame(nullptr, wxID_ANY, title, wxPoint(0, 0), wxSize(1920, 1080))
+#else
+    : wxFrame(nullptr, wxID_ANY, title, wxPoint(100, 20), wxSize(1280, 960))
+#endif
 {
     m_pConfig = new wxConfig(title);
    

@@ -24,11 +24,11 @@ bool CKhuCvApp::OnInit()
     m_locale.Init(language);
 
     m_pMainFrame = new CMainFrame(wxT("KhuCV App"));
-    /*
+    
 #ifndef  __APPLE__ 
     m_pMainFrame->Maximize(true);
 #endif
-*/
+
     m_pMainFrame->Show();
 
     m_pMainFrame->DragAcceptFiles(true);
