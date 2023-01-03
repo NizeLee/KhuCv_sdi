@@ -46,3 +46,4 @@ void DisplayImage(cv::Mat cvImage, int nPosX, int nPosY, bool bErase, bool bClea
 CKcImage GetLastSelImage();
 CMainDialog* GetMainDialog();
 void DlgPrintf(const char* ptr, ...);
+void DrawTextOnImage(cv::Mat& cvImage, const std::string& str, int x, int y, unsigned char R = 255, unsigned char G = 0, unsigned char B = 0, int pointSize = 15);

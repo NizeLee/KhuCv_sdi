@@ -37,7 +37,7 @@ bool CKhuCvApp::OnInit()
     
     
     wxPoint DlgPos;
-    wxSize DlgSize(350, 500);
+    wxSize DlgSize(550, 500);
     
 //#ifdef __APPLE__
     //DlgPos = {0, 100+480};//{5, wxDisplay().GetGeometry().GetHeight()-DlgSize.y};
@@ -167,4 +167,39 @@ void DlgPrintf(const char* ptr, ...) {
     else {
         wxGetApp().m_PrintVector.push_back(msg);
     }
+}
+
+void DrawTextOnImage(cv::Mat& cvImage, const std::string& str, int x, int y, unsigned char R, unsigned char G, unsigned char B, int pointSize) {
+    cv::Mat rgbImage;
+    int nW = cvImage.cols;
+    int nH = cvImage.rows;
+
+    wxColour color(R, G, B);
+
+    cv::cvtColor(cvImage, rgbImage, cv::COLOR_BGR2RGB);
+
+    wxImage wx_Image = wxImage(nW, nH, (unsigned char*)rgbImage.data, true);
+
+    wxBitmap bmp = wx_Image;
+
+    wxMemoryDC memdc;
+    wxBitmap memBmp(bmp.GetWidth(), bmp.GetHeight());
+    memBmp.UseAlpha();
+    memdc.SelectObject(memBmp);
+    memdc.DrawBitmap(bmp, 0, 0, true);
+
+    wxFont font(pointSize, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD, false, "Arial");
+    memdc.SetFont(font);
+
+    wxString text = str;
+
+    memdc.SetTextForeground(color);
+
+    memdc.DrawText(text, x, y);
+    memdc.SelectObject(wxNullBitmap);
+
+    wx_Image = memBmp.ConvertToImage();
+
+    rgbImage = cv::Mat(nH, nW, CV_8UC3, wx_Image.GetData(), nW * 3);
+    cv::cvtColor(rgbImage, cvImage, cv::COLOR_RGB2BGR);
 }

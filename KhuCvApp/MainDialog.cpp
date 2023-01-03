@@ -38,7 +38,7 @@ CMainDialog::CMainDialog(wxWindow* parent, wxWindowID id, const wxString& title,
 		m_pHbox[i] = new wxBoxSizer(wxHORIZONTAL);
 
 	m_pSrcFolderSelButton = new wxButton(this, IDC_SEL_FILE_FOLDER, wxT("..."), wxDefaultPosition, wxSize(30, 20));
-	m_pDisplaySrcPathText = new wxStaticText(this, IDC_DISPLAY_SRC_PATH, wxT(""), wxDefaultPosition, wxSize(180, 20), wxST_NO_AUTORESIZE);
+	m_pDisplaySrcPathText = new wxStaticText(this, IDC_DISPLAY_SRC_PATH, wxT(""), wxDefaultPosition, wxSize(380, 20), wxST_NO_AUTORESIZE);
 	m_pVideoFileCheck = new wxCheckBox(this, IDC_VIDEO_FILE_CHECK, wxT("Video file"), wxDefaultPosition, wxSize(90, 20));
 
 	m_pHbox[0]->Add(m_pSrcFolderSelButton, 0);
@@ -46,7 +46,7 @@ CMainDialog::CMainDialog(wxWindow* parent, wxWindowID id, const wxString& title,
 	m_pHbox[0]->Add(m_pVideoFileCheck, 0, wxLEFT, 5);
 
 	m_pDesFolderSelButton = new wxButton(this, IDC_SEL_DES_FOLDER, wxT("..."), wxDefaultPosition, wxSize(30, 20));
-	m_pDisplayDesPathText = new wxStaticText(this, IDC_DISPLAY_DES_PATH, wxT(""), wxDefaultPosition, wxSize(180, 20), wxST_NO_AUTORESIZE);
+	m_pDisplayDesPathText = new wxStaticText(this, IDC_DISPLAY_DES_PATH, wxT(""), wxDefaultPosition, wxSize(380, 20), wxST_NO_AUTORESIZE);
 	m_pSaveFrameCheck = new wxCheckBox(this, IDC_SAVE_FRAME_CHECK, wxT("Frame save"), wxDefaultPosition, wxSize(90, 20));
 
 	m_pHbox[1]->Add(m_pDesFolderSelButton, 0);
@@ -54,10 +54,10 @@ CMainDialog::CMainDialog(wxWindow* parent, wxWindowID id, const wxString& title,
 	m_pHbox[1]->Add(m_pSaveFrameCheck, 0, wxLEFT, 5);
 
 
-	m_pListCtrl = new wxListCtrl(this, IDC_FILE_LIST_CTRL, wxDefaultPosition, wxSize(320, 150), 
+	m_pListCtrl = new wxListCtrl(this, IDC_FILE_LIST_CTRL, wxDefaultPosition, wxSize(520, 150), 
 		wxLC_REPORT | wxLC_SINGLE_SEL | wxSUNKEN_BORDER);
 	long indx1 = m_pListCtrl->InsertColumn(0, "Num", wxLIST_FORMAT_LEFT, 50);
-	long indx2 = m_pListCtrl->InsertColumn(1, "File name", wxLIST_FORMAT_LEFT, 270);
+	long indx2 = m_pListCtrl->InsertColumn(1, "File name", wxLIST_FORMAT_LEFT, 470);
 
 	m_pHbox[2]->Add(m_pListCtrl, 1);
 
@@ -109,7 +109,7 @@ CMainDialog::CMainDialog(wxWindow* parent, wxWindowID id, const wxString& title,
 	m_pExampleButton = new wxButton(this, IDC_EXAMPLE, wxT("Example"), wxDefaultPosition, wxSize(70, 20));
 	m_pHbox[5]->Add(m_pExampleButton, 1);
 
-	m_pPrintListBox = new wxListBox(this, IDC_PRINT_LIST, wxDefaultPosition, wxSize(320, 150));
+	m_pPrintListBox = new wxListBox(this, IDC_PRINT_LIST, wxDefaultPosition, wxSize(520, 150));
 	m_pHbox[6]->Add(m_pPrintListBox, 1);
 
 	m_pVbox->Add(m_pHbox[0], 1, wxALIGN_CENTER | wxTOP, 5);
